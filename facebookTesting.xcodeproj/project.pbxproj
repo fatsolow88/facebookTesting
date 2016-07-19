@@ -15,6 +15,7 @@
 		F54E32AC1D3DD71300C9955A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F54E32AA1D3DD71300C9955A /* LaunchScreen.storyboard */; };
 		F54E32B71D3DD71400C9955A /* facebookTestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E32B61D3DD71400C9955A /* facebookTestingTests.m */; };
 		F54E32C21D3DD71400C9955A /* facebookTestingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E32C11D3DD71400C9955A /* facebookTestingUITests.m */; };
+		F54E32D11D3E157300C9955A /* facebookOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E32D01D3E157300C9955A /* facebookOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		F54E32BD1D3DD71400C9955A /* facebookTestingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = facebookTestingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F54E32C11D3DD71400C9955A /* facebookTestingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = facebookTestingUITests.m; sourceTree = "<group>"; };
 		F54E32C31D3DD71400C9955A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F54E32CF1D3E157300C9955A /* facebookOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebookOperation.h; sourceTree = "<group>"; };
+		F54E32D01D3E157300C9955A /* facebookOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = facebookOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 			children = (
 				F54E329F1D3DD71300C9955A /* AppDelegate.h */,
 				F54E32A01D3DD71300C9955A /* AppDelegate.m */,
+				F54E32CF1D3E157300C9955A /* facebookOperation.h */,
+				F54E32D01D3E157300C9955A /* facebookOperation.m */,
 				F54E32A21D3DD71300C9955A /* ViewController.h */,
 				F54E32A31D3DD71300C9955A /* ViewController.m */,
 				F54E32A51D3DD71300C9955A /* Main.storyboard */,
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F54E32A41D3DD71300C9955A /* ViewController.m in Sources */,
+				F54E32D11D3E157300C9955A /* facebookOperation.m in Sources */,
 				F54E32A11D3DD71300C9955A /* AppDelegate.m in Sources */,
 				F54E329E1D3DD71300C9955A /* main.m in Sources */,
 			);
