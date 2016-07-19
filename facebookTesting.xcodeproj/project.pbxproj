@@ -16,6 +16,9 @@
 		F54E32B71D3DD71400C9955A /* facebookTestingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E32B61D3DD71400C9955A /* facebookTestingTests.m */; };
 		F54E32C21D3DD71400C9955A /* facebookTestingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E32C11D3DD71400C9955A /* facebookTestingUITests.m */; };
 		F54E32D11D3E157300C9955A /* facebookOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F54E32D01D3E157300C9955A /* facebookOperation.m */; };
+		F54E32FA1D3E1D3500C9955A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E32F91D3E1D3500C9955A /* FBSDKCoreKit.framework */; };
+		F54E32FC1D3E1D7900C9955A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E32FB1D3E1D7900C9955A /* FBSDKLoginKit.framework */; };
+		F54E32FE1D3E1DCB00C9955A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F54E32FD1D3E1DCB00C9955A /* Bolts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		F54E32C31D3DD71400C9955A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F54E32CF1D3E157300C9955A /* facebookOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebookOperation.h; sourceTree = "<group>"; };
 		F54E32D01D3E157300C9955A /* facebookOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = facebookOperation.m; sourceTree = "<group>"; };
+		F54E32F91D3E1D3500C9955A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Documents/FacebookSDKs-iOS-4.14.0/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		F54E32FB1D3E1D7900C9955A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Documents/FacebookSDKs-iOS-4.14.0/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		F54E32FD1D3E1DCB00C9955A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Documents/FacebookSDKs-iOS-4.14.0/Bolts.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F54E32FE1D3E1DCB00C9955A /* Bolts.framework in Frameworks */,
+				F54E32FC1D3E1D7900C9955A /* FBSDKLoginKit.framework in Frameworks */,
+				F54E32FA1D3E1D3500C9955A /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +113,9 @@
 		F54E329B1D3DD71300C9955A /* facebookTesting */ = {
 			isa = PBXGroup;
 			children = (
+				F54E32F91D3E1D3500C9955A /* FBSDKCoreKit.framework */,
+				F54E32FB1D3E1D7900C9955A /* FBSDKLoginKit.framework */,
+				F54E32FD1D3E1DCB00C9955A /* Bolts.framework */,
 				F54E329F1D3DD71300C9955A /* AppDelegate.h */,
 				F54E32A01D3DD71300C9955A /* AppDelegate.m */,
 				F54E32CF1D3E157300C9955A /* facebookOperation.h */,
@@ -351,7 +363,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cheng Liu (9GSX95UK5T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -370,9 +382,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "01a9ec2e-dc31-48d4-9497-8183b0645adc";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -395,7 +408,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cheng Liu (9GSX95UK5T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -408,8 +421,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "01a9ec2e-dc31-48d4-9497-8183b0645adc";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -419,10 +433,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cheng Liu (9GSX95UK5T)";
+				FRAMEWORK_SEARCH_PATHS = "/Users/lowwaihong/Documents/FacebookSDKs-iOS-4.14.0";
 				INFOPLIST_FILE = facebookTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = IE.facebookTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "01a9ec2e-dc31-48d4-9497-8183b0645adc";
 			};
 			name = Debug;
 		};
@@ -430,10 +448,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Cheng Liu (9GSX95UK5T)";
+				FRAMEWORK_SEARCH_PATHS = "/Users/lowwaihong/Documents/FacebookSDKs-iOS-4.14.0";
 				INFOPLIST_FILE = facebookTesting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = IE.facebookTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "01a9ec2e-dc31-48d4-9497-8183b0645adc";
 			};
 			name = Release;
 		};
@@ -502,6 +524,7 @@
 				F54E32C81D3DD71400C9955A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F54E32C91D3DD71400C9955A /* Build configuration list for PBXNativeTarget "facebookTestingTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +533,7 @@
 				F54E32CB1D3DD71400C9955A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F54E32CC1D3DD71400C9955A /* Build configuration list for PBXNativeTarget "facebookTestingUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +542,7 @@
 				F54E32CE1D3DD71400C9955A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

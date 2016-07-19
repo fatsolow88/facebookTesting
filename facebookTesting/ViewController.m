@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "facebookOperation.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [[facebookOperation sharedInstance] loginFacebookWithViewController:self extraPermission:@[userEmailPermission,userLocationPermission] andBlock:^(NSDictionary *returnData, NSError *error, NSString *errorMessage) {
+        NSLog(@"returnData %@",returnData);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

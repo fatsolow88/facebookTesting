@@ -1,8 +1,8 @@
 //
 //  facebookOperation.m
-//  Solat
+//  facebookTesting
 //
-//  Created by Low Wai Hong on 06/05/2016.
+//  Created by Low Wai Hong on 19/07/2016.
 //  Copyright © 2016 Low Wai Hong. All rights reserved.
 //
 
@@ -59,17 +59,10 @@
                         
                         BOOL isPermissionAvailable = false;
                         
-                        if([[FBSDKAccessToken currentAccessToken].permissions containsObject:[permissionArray objectAtIndex:i]]){
+                        if([[FBSDKAccessToken currentAccessToken].permissions containsObject:[[permissionArray objectAtIndex:i] objectForKey:@"key"]]){
                             isPermissionAvailable = true;
                         }
-                        /*
-                        for(int j=0; j<[[FBSDKAccessToken currentAccessToken].permissions count]; j++){
-                            
-                            if([[[[FBSDKAccessToken currentAccessToken].permissions allObjects] objectAtIndex:j] isEqualToString:[permissionArray objectAtIndex:i]]){
-                                break;
-                            }
-                        }
-                        */
+
                         if(!isPermissionAvailable){
                             isAllPermissionAvailable = false;
                             break;
@@ -88,7 +81,14 @@
 }
 
 - (void)getUserProfileAndReturnBlock:(void(^)(NSDictionary *returnData, NSError * error, NSString *errorMessage))block{
-    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":@"id,email,first_name,last_name,picture,gender,location{location}"}];
+    
+    NSString *graphRequestString = @"id,first_name,last_name,picture,gender";
+    
+    for(int i=0; i<[permissionArray count]; i++){
+        graphRequestString = [graphRequestString stringByAppendingString:[NSString stringWithFormat:@",%@",[[permissionArray objectAtIndex:i] objectForKey:@"value"]]];
+    }
+    
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields":graphRequestString}];
     [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error){
             NSLog(@"error description - 4 %@",error.localizedDescription);
@@ -103,7 +103,7 @@
 - (void)getPermissionWithViewController:(UIViewController *)viewController andBlock:(void(^)(NSError * error, NSString *errorMessage, BOOL isUserCancel))block{
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    [login logInWithReadPermissions:permissionArray fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    [login logInWithReadPermissions:[self getArrayKey] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
         if(error){
             NSLog(@"error description - 5 %@",error.localizedDescription);
             block(error,nil,false);
@@ -115,6 +115,16 @@
     }];
 }
 
+- (NSArray *)getArrayKey{
+    NSMutableArray *arrayKey = [[NSMutableArray alloc] init];
+    
+    for(int i=0; i<[permissionArray count]; i++){
+        [arrayKey addObject:[[permissionArray objectAtIndex:i] objectForKey:@"key"]];
+    }
+    return arrayKey;
+}
+
+
 - (void)setPermissionArray:(NSArray *)permissions{
     [permissionArray removeAllObjects];
     
@@ -122,9 +132,7 @@
         [permissionArray addObject:[permissions objectAtIndex:i]];
 
     }
-    
 }
-
 
 - (BOOL)checkPermission:(NSString *)permission{
     BOOL isPermissionAvailable = false;
@@ -136,7 +144,6 @@
     }
     return isPermissionAvailable;
 }
-
 
 #pragma mark - Logout
 - (void)logoutFacebook{
