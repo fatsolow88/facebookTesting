@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UIButton *facebookButton;
+
+- (IBAction)facebookButtonPressed;
 
 @end
 

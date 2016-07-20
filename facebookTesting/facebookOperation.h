@@ -20,4 +20,7 @@
 - (void)loginFacebookWithViewController:(UIViewController *)viewController extraPermission:(NSArray *)permissions andBlock:(void (^)(NSDictionary *, NSError *, NSString *))block;
 
 - (void)logoutFacebook;
+
+- (BOOL)checkAccessTokenWithPermission:(NSArray *)permission;
+
 @end

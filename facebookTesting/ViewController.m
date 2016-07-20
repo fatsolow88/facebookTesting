@@ -9,19 +9,41 @@
 #import "ViewController.h"
 #import "facebookOperation.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    NSArray *permissionArray;
+}
 
 @end
 
 @implementation ViewController
 
+@synthesize facebookButton;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [facebookButton setTitle:@"Login" forState:UIControlStateNormal];
+    [facebookButton setTitle:@"Logout" forState:UIControlStateSelected];
     
-    [[facebookOperation sharedInstance] loginFacebookWithViewController:self extraPermission:@[userEmailPermission,userLocationPermission] andBlock:^(NSDictionary *returnData, NSError *error, NSString *errorMessage) {
-        NSLog(@"returnData %@",returnData);
-    }];
+    permissionArray = @[userEmailPermission,userLocationPermission];
+    if([[facebookOperation sharedInstance] checkAccessTokenWithPermission:permissionArray]){
+        [self facebookButtonPressed];
+    }
+}
+
+- (IBAction)facebookButtonPressed{
+    
+    if([facebookButton isSelected]){
+        [[facebookOperation sharedInstance] logoutFacebook];
+        [facebookButton setSelected:NO];
+    }else{
+        [[facebookOperation sharedInstance] loginFacebookWithViewController:self extraPermission:permissionArray andBlock:^(NSDictionary *returnData, NSError *error, NSString *errorMessage) {
+            if(!error){
+                NSLog(@"return data %@",returnData);
+                [facebookButton setSelected:YES];
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

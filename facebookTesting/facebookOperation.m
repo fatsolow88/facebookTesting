@@ -102,24 +102,28 @@
 #pragma mark - Get Permission
 - (void)getPermissionWithViewController:(UIViewController *)viewController andBlock:(void(^)(NSError * error, NSString *errorMessage, BOOL isUserCancel))block{
     
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    [login logInWithReadPermissions:[self getArrayKey] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-        if(error){
-            NSLog(@"error description - 5 %@",error.localizedDescription);
-            block(error,nil,false);
-        }else if(result.isCancelled){
-            block(nil,@"User Cancel",true);
-        }else{
-            block(nil,nil,false);
-        }
-    }];
+    if([self checkAccessTokenWithPermission:permissionArray]){
+        block(nil,nil,false);
+    }else{
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        [login logInWithReadPermissions:[self getArrayKeyWithPermissionArray:permissionArray] fromViewController:viewController handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            if(error){
+                NSLog(@"error description - 5 %@",error.localizedDescription);
+                block(error,nil,false);
+            }else if(result.isCancelled){
+                block(nil,@"User Cancel",true);
+            }else{
+                block(nil,nil,false);
+            }
+        }];
+    }
 }
 
-- (NSArray *)getArrayKey{
+- (NSArray *)getArrayKeyWithPermissionArray:(NSArray *)pArray{
     NSMutableArray *arrayKey = [[NSMutableArray alloc] init];
     
-    for(int i=0; i<[permissionArray count]; i++){
-        [arrayKey addObject:[[permissionArray objectAtIndex:i] objectForKey:@"key"]];
+    for(int i=0; i<[pArray count]; i++){
+        [arrayKey addObject:[[pArray objectAtIndex:i] objectForKey:@"key"]];
     }
     return arrayKey;
 }
@@ -138,10 +142,26 @@
     BOOL isPermissionAvailable = false;
     
     if([FBSDKAccessToken currentAccessToken]){
-        if([[FBSDKAccessToken currentAccessToken].permissions containsObject:permission]){
+        if([[FBSDKAccessToken currentAccessToken] hasGranted:permission]){
             isPermissionAvailable = true;
         }
     }
+    return isPermissionAvailable;
+}
+
+- (BOOL)checkAccessTokenWithPermission:(NSArray *)permission{
+    
+    BOOL isPermissionAvailable = true;
+    
+    NSArray *permissionKey = [self getArrayKeyWithPermissionArray:permission];
+    
+    for(int i=0; i<[permissionKey count]; i++){
+        if(![self checkPermission:[permissionKey objectAtIndex:i]]){
+            isPermissionAvailable = false;
+            break;
+        }
+    }
+    
     return isPermissionAvailable;
 }
 
